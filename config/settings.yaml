@@ -1,0 +1,61 @@
+# SpyText Configuration
+# All settings for human-aligned document perception
+
+# Extraction settings
+extraction:
+  # PDF extraction method preference
+  # Options: "native" (pdfplumber), "hybrid" (native + OCR fallback)
+  pdf_method: "hybrid"
+
+  # OCR settings (Phase 2+)
+  ocr:
+    enabled: true
+    language: "eng"  # Tesseract language code
+    dpi: 300         # Resolution for PDF-to-image conversion
+
+# Visibility detection thresholds (Phase 3+)
+visibility:
+  # Contrast ratio thresholds (WCAG-based)
+  contrast:
+    min_ratio: 4.5        # Minimum acceptable contrast (WCAG AA)
+    suspicious_ratio: 3.0  # Below this = flagged as suspicious
+    invisible_ratio: 1.5   # Below this = flagged as invisible
+
+  # Font size thresholds
+  font_size:
+    min_readable: 8.0     # Minimum readable font size (points)
+    suspicious_size: 4.0  # Below this = flagged as suspicious
+    invisible_size: 1.0   # Below this = flagged as invisible
+
+  # Bounding box checks
+  bbox:
+    check_off_screen: true   # Flag text outside page bounds
+    check_zero_area: true    # Flag zero-width or zero-height text
+
+# Risk aggregation (Phase 4+)
+risk:
+  # Thresholds for document-level risk scoring
+  suspicious_span_threshold: 5    # Number of suspicious spans to flag document
+  invisible_span_threshold: 1     # Any invisible text flags document
+
+  # Prompt injection indicators
+  check_llm_keywords: true        # Detect "ignore previous", "system:", etc.
+  check_hidden_instructions: true # Detect instruction-like patterns
+
+# Output behavior (Phase 6+)
+output:
+  # How to handle detected risks
+  # Options: "strip" (remove suspicious text), "warn" (include with warning), "block" (refuse processing)
+  suspicious_text_action: "warn"
+  invisible_text_action: "strip"
+
+  # LLM prompt generation
+  include_metadata: true          # Include extraction metadata in output
+  include_risk_summary: true      # Include risk analysis summary
+  safe_mode: true                 # Never silently pass hidden text
+
+# Logging and debugging
+logging:
+  level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+  output_spans: false  # Log individual text spans (verbose)
+  output_file: null    # Optional log file path

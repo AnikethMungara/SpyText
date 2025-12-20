@@ -1,0 +1,2 @@
+This is a simple test file for Phase 1 CLI validation.
+It's not a PDF, but it exists so we can test the file existence check.

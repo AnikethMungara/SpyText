@@ -1,0 +1,21 @@
+# SpyText - Human-Aligned Document Perception System
+# All dependencies run locally, no cloud APIs
+
+# PDF text extraction (native support)
+pdfplumber==0.11.0      # High-level PDF text extraction with precise positioning
+pymupdf==1.23.26        # Fast, low-level PDF rendering and text extraction
+
+# Image processing and OCR
+Pillow==10.1.0          # Image manipulation for visual analysis
+pytesseract==0.3.10     # Local OCR engine (requires tesseract-ocr binary)
+opencv-python==4.8.1.78 # Computer vision for contrast and visibility detection
+
+# Data processing
+numpy==1.26.2           # Numerical operations for color/contrast calculations
+
+# Configuration and CLI
+PyYAML==6.0.1           # Configuration file parsing
+rich==13.7.0            # Beautiful CLI output and progress indicators
+
+# Testing (for creating test PDFs)
+reportlab==4.0.7        # PDF generation for test documents
