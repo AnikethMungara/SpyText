@@ -43,15 +43,31 @@ htmlcov/
 examples/*.pdf
 examples/*.png
 examples/*.jpg
+examples/*.docx
 tests/fixtures/*.pdf
 output/
 logs/
 *.log
 
+# Test suites and test files
+tests/
+test_*.py
+test_*.bat
+*_test.py
+create_test_*.py
+create_advanced_*.py
+
 # Development documentation (internal use)
 PHASE_STATUS.md
 PHASE2_SUMMARY.md
 CONTRIBUTING.md
+BUILD_EXECUTABLE.md
+CHANGELOG.md
+DOCX_IMPLEMENTATION_SUMMARY.md
+DOCX_SUPPORT.md
+EXECUTABLE_USAGE.md
+INSTALLATION.md
+QUICK_REFERENCE.md
 
 # OS
 .DS_Store

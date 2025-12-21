@@ -5,8 +5,11 @@ TextSpan represents a single piece of extracted text with all metadata
 needed to assess human visibility.
 """
 
-from dataclasses import dataclass
-from typing import Optional, Tuple
+from dataclasses import dataclass, field
+from typing import Optional, Tuple, TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from src.detect.visibility_analyzer import VisibilityStatus
 
 
 @dataclass
@@ -14,8 +17,7 @@ class TextSpan:
     """
     Represents a single span of text extracted from a document.
 
-    All visual properties are captured to enable visibility analysis
-    in later phases.
+    All visual properties are captured to enable visibility analysis.
 
     Attributes:
         text: The actual text content
@@ -24,6 +26,8 @@ class TextSpan:
         font_size: Font size in points (if available)
         font_color: RGB color tuple (0-255 per channel) of text
         background_color: RGB color tuple of background behind text
+        visibility_status: Classification of visibility (Phase 3+)
+        contrast_ratio: WCAG contrast ratio (Phase 3+)
     """
     text: str
     page_number: int
@@ -31,6 +35,10 @@ class TextSpan:
     font_size: Optional[float] = None
     font_color: Optional[Tuple[int, int, int]] = None  # RGB
     background_color: Optional[Tuple[int, int, int]] = None  # RGB
+
+    # Phase 3: Visibility analysis results
+    visibility_status: Optional['VisibilityStatus'] = None
+    contrast_ratio: Optional[float] = None
 
     def __repr__(self) -> str:
         """Human-readable representation for debugging."""

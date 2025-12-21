@@ -19,7 +19,16 @@
       "Bash(git remote add:*)",
       "Bash(git branch:*)",
       "Bash(git pull:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(findstr:*)",
+      "Bash(cat:*)",
+      "Bash(./spytext.bat --scan examples/microscopic.pdf)",
+      "Bash(echo:*)",
+      "Bash(pip install:*)",
+      "Bash(test_docx_suite.bat)",
+      "Bash(cmd /c test_docx_suite.bat)",
+      "Bash(cmd /c \"test_all_docx.bat\")",
+      "Bash(ls:*)"
     ]
   }
 }

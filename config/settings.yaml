@@ -42,6 +42,19 @@ risk:
   check_llm_keywords: true        # Detect "ignore previous", "system:", etc.
   check_hidden_instructions: true # Detect instruction-like patterns
 
+# Text sanitization (Phase 5+)
+sanitization:
+  # Default sanitization strategy
+  # Options: "strip" (remove), "flag" (mark with warnings), "preserve" (keep all)
+  default_strategy: "strip"
+
+  # What to remove
+  remove_invisible: true          # Always remove invisible text
+  remove_suspicious: false        # Keep suspicious text (just flag it)
+
+  # Flag prefix for suspicious content
+  flag_prefix: "[SUSPICIOUS] "
+
 # Output behavior (Phase 6+)
 output:
   # How to handle detected risks

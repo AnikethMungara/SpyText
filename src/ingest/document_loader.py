@@ -24,6 +24,7 @@ class DocumentLoader:
     # Supported file formats
     SUPPORTED_FORMATS = {
         '.pdf': 'pdf',
+        '.docx': 'docx',
         '.png': 'image',
         '.jpg': 'image',
         '.jpeg': 'image',
@@ -76,7 +77,7 @@ class DocumentLoader:
 
         # Detect and validate format
         file_format = self.detect_format(path)
-        if file_format not in ['pdf', 'image']:
+        if file_format not in ['pdf', 'docx', 'image']:
             raise ValueError(
                 f"Unsupported file format: {path.suffix}. "
                 f"Supported formats: {', '.join(self.SUPPORTED_FORMATS.keys())}"
@@ -94,7 +95,7 @@ class DocumentLoader:
             file_path: Path to document
 
         Returns:
-            Format category string ('pdf' or 'image')
+            Format category string ('pdf', 'docx', or 'image')
 
         Raises:
             ValueError: If file format is not recognized
@@ -111,6 +112,8 @@ class DocumentLoader:
         if mime_type:
             if mime_type == 'application/pdf':
                 return 'pdf'
+            elif mime_type == 'application/vnd.openxmlformats-officedocument.wordprocessingml.document':
+                return 'docx'
             elif mime_type.startswith('image/'):
                 return 'image'
 

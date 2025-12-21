@@ -17,5 +17,8 @@ numpy==1.26.2           # Numerical operations for color/contrast calculations
 PyYAML==6.0.1           # Configuration file parsing
 rich==13.7.0            # Beautiful CLI output and progress indicators
 
+# DOCX text extraction
+python-docx==1.1.0      # Microsoft Word document extraction
+
 # Testing (for creating test PDFs)
 reportlab==4.0.7        # PDF generation for test documents
