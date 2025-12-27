@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(Get-Content \"C:\\\\Users\\\\anike\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\c--SpyText\\\\tasks\\\\b4909e0.output\" -Tail 50)",
+      "Bash(tee:*)",
+      "Bash(xargs kill:*)"
+    ]
+  }
+}

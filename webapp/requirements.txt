@@ -1,0 +1,12 @@
+Flask==3.0.0
+Werkzeug==3.0.1
+PyYAML==6.0.1
+
+# SpyText dependencies (from parent)
+pdfplumber==0.11.0
+pymupdf==1.23.26
+Pillow==10.1.0
+pytesseract==0.3.10
+opencv-python==4.8.1.78
+numpy==1.26.2
+python-docx==1.1.0

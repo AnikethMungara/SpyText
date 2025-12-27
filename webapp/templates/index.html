@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpyText - Document Security Scanner</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Left Panel (split into top and bottom) -->
+        <div class="left-panel">
+            <!-- Top Left: Upload Section -->
+            <div class="upload-section">
+                <div class="header">
+                    <h1>SpyText</h1>
+                    <p class="subtitle">Document Security Scanner</p>
+                </div>
+
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📄</div>
+                    <h3>Drop document here</h3>
+                    <p>or click to browse</p>
+                    <p class="formats">Supports: PDF, DOCX</p>
+                    <input type="file" id="fileInput" accept=".pdf,.docx" hidden>
+                </div>
+
+                <div class="scanning-indicator" id="scanningIndicator" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Scanning document...</p>
+                </div>
+            </div>
+
+            <!-- Bottom Left: Results Section -->
+            <div class="results-section">
+                <div id="noResults" class="no-results">
+                    <p>Upload a document to see security analysis</p>
+                </div>
+
+                <div id="resultsContainer" style="display: none;">
+                    <!-- Risk Score -->
+                    <div class="risk-score-container">
+                        <div class="risk-score" id="riskScore">
+                            <div class="score-circle" id="scoreCircle">
+                                <span class="score-value" id="scoreValue">0</span>
+                                <span class="score-max">/100</span>
+                            </div>
+                            <div class="risk-label">
+                                <span class="status-badge" id="statusBadge">SAFE</span>
+                                <p class="risk-level" id="riskLevel">No issues detected</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats -->
+                    <div class="stats-grid">
+                        <div class="stat">
+                            <div class="stat-value" id="totalSpans">0</div>
+                            <div class="stat-label">Total Spans</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value" id="hiddenSpans">0</div>
+                            <div class="stat-label">Hidden Text</div>
+                        </div>
+                    </div>
+
+                    <!-- Issues List -->
+                    <div class="issues-section">
+                        <h3>Suspicious Text Detected</h3>
+                        <div class="issues-list" id="issuesList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Panel: Document Viewer -->
+        <div class="right-panel">
+            <div id="documentPlaceholder" class="document-placeholder">
+                <div class="placeholder-content">
+                    <div class="placeholder-icon">📋</div>
+                    <h2>Document Preview</h2>
+                    <p>Upload a document to view its contents</p>
+                </div>
+            </div>
+
+            <div id="documentViewer" class="document-viewer" style="display: none;">
+                <div class="document-header">
+                    <h3 id="documentTitle">Document Preview</h3>
+                    <div class="viewer-controls">
+                        <button id="prevPage" class="viewer-btn">←</button>
+                        <span id="pageInfo">Page 1 of 1</span>
+                        <button id="nextPage" class="viewer-btn">→</button>
+                        <button id="zoomOut" class="viewer-btn">-</button>
+                        <span id="zoomLevel">100%</span>
+                        <button id="zoomIn" class="viewer-btn">+</button>
+                    </div>
+                </div>
+                <div class="document-content-wrapper">
+                    <!-- PDF Viewer -->
+                    <div id="pdfViewer" class="pdf-viewer" style="display: none;">
+                        <canvas id="pdfCanvas"></canvas>
+                    </div>
+                    <!-- Text Viewer (for DOCX and fallback) -->
+                    <div id="textViewer" class="text-viewer" style="display: none;">
+                        <div class="document-content" id="documentContent"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        // Configure PDF.js worker
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='pdfviewer.js') }}"></script>
+</body>
+</html>
