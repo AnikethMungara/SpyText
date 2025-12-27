@@ -120,6 +120,7 @@ Hidden text locations:
 - Page break detection (explicit + estimated)
 - Table cell iteration with formatting preservation
 
+
 ## Architecture
 
 ```
@@ -147,6 +148,8 @@ SpyText/
 ```
 
 ## Use Cases
+
+
 
 ### 1. Pre-LLM Security Gate
 
