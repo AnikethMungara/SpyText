@@ -8,6 +8,7 @@ Detect invisible text, microscopic fonts, and hidden prompt injection attacks in
 
 ## Overview
 
+
 SpyText is a local security scanner that detects human-invisible text in PDF and DOCX files. It prevents hidden prompt injection attacks by identifying white-on-white text, microscopic fonts, low-contrast text, and off-screen elements that could manipulate AI systems.
 
 **Runs 100% locally** - No cloud APIs, no external dependencies, no data leaves your machine.
